@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useBreedList from "./useBreedList";
-import Results from "./results";
+import Results from "./Results";
 import { capitalizeFirstLetter } from "../utils/stringUtils";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
