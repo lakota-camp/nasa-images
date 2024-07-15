@@ -7,6 +7,7 @@ const Details = () => {
   const { id } = useParams();
   const results = useQuery(["details", id], fetchPet);
 
+  // Error State
   if (results.isError) {
     return (
       <div className="error-paine">
