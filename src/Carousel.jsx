@@ -20,15 +20,15 @@ class Carousel extends Component {
 
   // Must have a render function
   render() {
+    // throw new Error("lol error");
     // Mutable
     const { active } = this.state;
     // Immutable
-    const { images, title } = this.props;
+    const { images } = this.props;
 
     return (
       <>
         <div className="carousel">
-          {/* <h3>{title}</h3> */}
           <img src={images[active]} alt="animal hero" />
           <div className="carousel-smaller">
             {images.map((photo, index) => (
