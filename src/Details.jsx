@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import Carousel from "./Carousel";
 import fetchPet from "./fetchPet";
 import { capitalizeFirstLetter } from "../utils/stringUtils";
+import CarouselFunction from "./CarouselFunction";
 
 const Details = () => {
   const { id } = useParams();
@@ -28,6 +30,7 @@ const Details = () => {
 
   return (
     <div className="details">
+      <Carousel images={pet.images} title="Class Component" />
       <div>
         <h1>{pet.name}</h1>
         <h2>
