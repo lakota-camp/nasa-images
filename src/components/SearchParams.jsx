@@ -1,17 +1,17 @@
 import { useState, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import AdoptedPetContext from "./AdoptedPetContext";
-import useBreedList from "./useBreedList";
+import AdoptedPetContext from "../AdoptedPetContext";
+import useBreedList from "../hooks/useBreedList";
 import Results from "./Results";
-import fetchSearch from "./fetchSearch";
-import { capitalizeFirstLetter } from "../utils/stringUtils";
+import fetchSearch from "../api/fetchSearch";
+import { capitalizeFirstLetter } from "../../utils/stringUtils";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 // Uncontrolled form
 const SearchParams = () => {
   const [requestParams, setRequestParams] = useState({
-    location: "",
+    date: "",
     animal: "",
     breed: "",
   });

@@ -1,22 +1,18 @@
-import { useState, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import AdoptedPetContext from "./AdoptedPetContext";
 import ErrorBoundary from "./ErrorBoundry";
-import Carousel from "./Carousel";
-import fetchPet from "./fetchPet";
-import { capitalizeFirstLetter } from "../utils/stringUtils";
 import Modal from "./Modal";
+import fetchPhoto from "../api/fetchPhoto";
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
 
   // '_' symbol means note to future self that value is insignificant
   // eslint-disable-next-line no-unused-vars
-  const [_, setAdoptedPet] = useContext(AdoptedPetContext);
+
   const { id } = useParams();
-  const results = useQuery(["details", id], fetchPet);
+  const results = useQuery(["details", id], fetchPhoto);
 
   // Error State
   if (results.isError) {
@@ -35,34 +31,30 @@ const Details = () => {
       </div>
     );
   }
-  const pet = results.data.pets[0];
+  const pet = results.data;
 
   return (
     <div className="details">
-      <Carousel images={pet.images} title="Class Component" />
       <div>
         <h1>{pet.name}</h1>
         <h2>
-          {capitalizeFirstLetter(pet.animal)} - {pet.breed} - {pet.city},{" "}
-          {pet.state}
+          {/* Display image details here */}
           {/* When button is clicked => setShowModal to true */}
-          <button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
-          <p>{pet.description}</p>
+          <button onClick={() => setShowModal(true)}>Details *image*</button>
+          <p>image description here</p>
           {/* When show modal is true => display modal component */}
           {showModal ? (
             <Modal>
               <div>
-                <h1>Would you like to adopt {pet.name}?</h1>
+                <h1>Details</h1>
                 <div className="buttons">
                   <button
                     onClick={() => {
-                      setAdoptedPet(pet);
-                      navigate("/");
+                      setShowModal(false);
                     }}
                   >
-                    Yes
+                    Exit
                   </button>
-                  <button onClick={() => setShowModal(false)}>No</button>
                 </div>
               </div>
             </Modal>

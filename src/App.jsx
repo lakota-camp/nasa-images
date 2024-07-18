@@ -2,9 +2,10 @@ import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import SearchParams from "./SearchParams";
-import Details from "./Details";
+import Details from "./components/Details";
 import AdoptedPetContext from "./AdoptedPetContext";
+import NasaImageDetails from "./components/NasaImageDetails";
+import NasaImageList from "./components/NasaImageList";
 
 // Cache time in milliseconds
 const queryClient = new QueryClient({
@@ -27,11 +28,13 @@ const App = () => {
         {/* Context to allow entire app to have access to global state adoptedPet */}
         <AdoptedPetContext.Provider value={adoptedPetHook}>
           <header>
-            <Link to="/">Adopt Me!</Link>
+            <Link to="/">Nasa Images</Link>
           </header>
+
           <Routes>
             <Route path="/details/:id" element={<Details />} />
-            <Route path="/" element={<SearchParams />} />
+            <Route path="/" element={<NasaImageDetails />} />
+            <Route path="/images" element={<NasaImageList />} />
           </Routes>
         </AdoptedPetContext.Provider>
       </QueryClientProvider>

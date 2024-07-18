@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from "../utils/stringUtils";
+import { capitalizeFirstLetter } from "../../utils/stringUtils";
 import { Link } from "react-router-dom";
 
 const Pet = ({ name, animal, breed, images, location, id }) => {
