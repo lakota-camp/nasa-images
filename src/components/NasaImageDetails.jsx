@@ -4,7 +4,8 @@ import fetchPhoto from "../api/fetchPhoto";
 import Modal from "./Modal";
 
 const NasaImageDetails = () => {
-  const results = useQuery(["imageDetails"], fetchPhoto);
+  const date = "2015-03-25";
+  const results = useQuery(["imageDetails"], fetchPhoto(date));
   const [showModal, setShowModal] = useState(false);
 
   if (results.isError) {

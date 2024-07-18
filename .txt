@@ -1,0 +1,28 @@
+<div className="card" key={image.id}>
+            {image.url.includes("youtube") ? (
+              // <iframe src={image.url} title={image.title}></iframe>
+              <></>
+            ) : (
+              <div className="card">
+                <div className="card-image-container">
+                  <div className="card-image">
+                    <button
+                      className="image-button"
+                      onClick={() => handleOpenModal(image)}
+                    >
+                      <img src={image.url} alt={image.title} width="800" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="card-content">
+                  <div className="card-title">
+                    <h1>{image.title}</h1>
+                  </div>
+                  <h2>{image.date}</h2>
+                </div>
+
+                {/* <button onClick={() => handleOpenModal(image)}>Details</button> */}
+              </div>
+            )}
+          </div>

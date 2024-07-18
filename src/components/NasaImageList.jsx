@@ -2,6 +2,9 @@ import fetchSearch from "../api/fetchSearch";
 import { useQuery } from "@tanstack/react-query";
 import Modal from "./Modal";
 import { useState } from "react";
+import ErrorBoundary from "./ErrorBoundry";
+import ImageCard from "./ImageCard";
+import "../styles/gallery.css";
 
 const NasaImageList = () => {
   const results = useQuery(["images"], fetchSearch);
@@ -26,29 +29,16 @@ const NasaImageList = () => {
   };
 
   return (
-    <div className="image-list">
+    <div className="gallery">
       {!images.length ? (
         <h1>No Images Found</h1>
       ) : (
         images.map((image) => (
-          <div key={image.id}>
-            {image.url.includes("youtube") ? (
-              <iframe src={image.url} title={image.title}></iframe>
-            ) : (
-              <>
-                <h1>{image.title}</h1>
-                <h2>{image.date}</h2>
-                <button
-                  className="image-button"
-                  onClick={() => handleOpenModal(image)}
-                >
-                  <img src={image.url} alt={image.title} width="800" />
-                </button>
-
-                {/* <button onClick={() => handleOpenModal(image)}>Details</button> */}
-              </>
-            )}
-          </div>
+          <ImageCard
+            key={image.id}
+            image={image}
+            handleOpenModal={handleOpenModal}
+          />
         ))
       )}
 
@@ -56,6 +46,7 @@ const NasaImageList = () => {
         <Modal onClose={handleCloseModal}>
           <div>
             <h1>{selectedImage.title}</h1>
+            <h2>{selectedImage.date}</h2>
             <p>{selectedImage.explanation}</p>
             <button onClick={handleCloseModal}>Exit</button>
           </div>
@@ -65,4 +56,12 @@ const NasaImageList = () => {
   );
 };
 
-export default NasaImageList;
+function ImageListErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <NasaImageList {...props} />
+    </ErrorBoundary>
+  );
+}
+
+export default ImageListErrorBoundary;

@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Details from "./components/Details";
-import AdoptedPetContext from "./AdoptedPetContext";
-import NasaImageDetails from "./components/NasaImageDetails";
 import NasaImageList from "./components/NasaImageList";
+import Home from "./pages/Home";
+import NasaImageDetails from "./components/NasaImageDetails";
 
 // Cache time in milliseconds
 const queryClient = new QueryClient({
@@ -20,23 +18,20 @@ const queryClient = new QueryClient({
 
 // App component
 const App = () => {
-  const adoptedPetHook = useState(null);
-
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        {/* Context to allow entire app to have access to global state adoptedPet */}
-        <AdoptedPetContext.Provider value={adoptedPetHook}>
-          <header>
-            <Link to="/">Nasa Images</Link>
-          </header>
-
-          <Routes>
-            <Route path="/details/:id" element={<Details />} />
-            <Route path="/" element={<NasaImageDetails />} />
-            <Route path="/images" element={<NasaImageList />} />
-          </Routes>
-        </AdoptedPetContext.Provider>
+        {/* Header */}
+        <header>
+          <Link to="/">Home</Link>
+          <Link to="/images">Nasa Images</Link>
+        </header>
+        {/* Routes */}
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/details/:id" element={<NasaImageDetails />} />
+          <Route path="/images" element={<NasaImageList />} />
+        </Routes>
       </QueryClientProvider>
     </BrowserRouter>
   );
