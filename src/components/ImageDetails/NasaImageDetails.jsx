@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import fetchPhoto from "../api/fetchPhoto";
-import Modal from "./Modal";
+import fetchPhoto from "../../api/fetchPhoto";
+import Modal from "../Modal/Modal";
 
 const NasaImageDetails = () => {
   const date = "2015-03-25";

@@ -1,9 +1,9 @@
-import NasaImageOfTheDay from "../components/NasaImageOfTheDay";
-
+import NasaImageOfTheDay from "../components/ImageOfDay/NasaImageOfTheDay";
+import styles from "./Home.module.scss";
 const Home = () => {
   return (
     <>
-      <h1 className="text-center">NASA Image of the day</h1>
+      <h1 className={`${styles.header} font-xxl`}>NASA Image of the day</h1>
       <NasaImageOfTheDay />;
     </>
   );

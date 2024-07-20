@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import ErrorBoundary from "./ErrorBoundry";
-import Modal from "./Modal";
-import fetchPhoto from "../api/fetchPhoto";
+import ErrorBoundary from "../Error/ErrorBoundary";
+import Modal from "../Modal/Modal";
+import fetchPhoto from "../../api/fetchPhoto";
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);

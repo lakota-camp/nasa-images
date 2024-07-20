@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import "./Modal.scss";
 
 const Modal = ({ children }) => {
   const elRef = useRef(null); // useRef is used to create a reference to a DOM element

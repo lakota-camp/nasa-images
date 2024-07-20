@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import fetchPhoto from "../api/fetchPhoto";
-import Modal from "./Modal";
+import fetchPhoto from "../../api/fetchPhoto";
+import Modal from "../Modal/Modal";
+import styles from "./imageOfTheDay.module.scss";
 
 const NasaImageOfTheDay = () => {
   const results = useQuery(["imageDetails"], fetchPhoto);
@@ -16,23 +17,32 @@ const NasaImageOfTheDay = () => {
   }
 
   const image = results.data;
-  console.log(image);
 
   return (
     <>
-      <div className="image-of-the-day-card">
+      {/* Container */}
+      <div className={styles.container}>
+        <div className={styles.container}>
+          <div className={`${styles.header} font-xl`}>
+            <h2>{image.title}</h2>
+            <h3>{image.date}</h3>
+          </div>
+          {/* Img Content */}
+          <div className={styles.content}>
+            {/* Image / Video */}
+            {image.url.includes("youtube") ? (
+              <iframe src={image.url} title={image.title}></iframe>
+            ) : (
+              <button
+                className={styles.imageButton}
+                onClick={() => setShowModal(true)}
+              >
+                <img src={image.url} alt={image.title} />
+              </button>
+            )}
+          </div>
+        </div>
         {/* Header */}
-        <h2>{image.title}</h2>
-        <h3>{image.date}</h3>
-
-        {/* Image / Video */}
-        {image.url.includes("youtube") ? (
-          <iframe src={image.url} title={image.title}></iframe>
-        ) : (
-          <button className="image-button" onClick={() => setShowModal(true)}>
-            <img src={image.url} alt={image.title} />
-          </button>
-        )}
       </div>
       {/* Details button */}
       {/* <button onClick={() => setShowModal(true)}>Details</button> */}

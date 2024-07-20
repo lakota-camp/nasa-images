@@ -1,0 +1,20 @@
+@import "variables";
+
+.font-xs {
+  font-size: var(--font-size-xs);
+}
+.font-sm {
+  font-size: var(--font-size-sm);
+}
+.font-md {
+  font-size: var(--font-size-md);
+}
+.font-lg {
+  font-size: var(--font-size-lg);
+}
+.font-xl {
+  font-size: var(--font-size-xl);
+}
+.font-xxl {
+  font-size: var(--font-size-xxl);
+}

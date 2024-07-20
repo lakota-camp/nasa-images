@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.header {
+  padding: $spacing-unit;
+}
+
+.link {
+  text-decoration: none;
+  display: block;
+  color: $text-color;
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start; /* horizontal axis = center */
+  align-items: center; /* vertical axis = center */
+  gap: 2rem;
+  padding: $spacing-unit $spacing-unit;
+}
+
+nav a:hover,
+nav [class*="fa-"]:hover {
+  color: $secondary-color;
+}

@@ -1,12 +1,12 @@
-import fetchSearch from "../api/fetchSearch";
+import fetchSearch from "../../api/fetchSearch";
 import { useQuery } from "@tanstack/react-query";
-import Modal from "./Modal";
+import Modal from "../Modal/Modal";
 import { useState } from "react";
-import ErrorBoundary from "./ErrorBoundry";
-import ImageCard from "./ImageCard";
-import "../styles/gallery.css";
+import ErrorBoundary from "../Error/ErrorBoundary";
+import ImageCard from "../ImageCard/ImageCard";
+import "./gallery.css";
 
-const NasaImageList = () => {
+const ImageGallery = () => {
   const results = useQuery(["images"], fetchSearch);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -33,13 +33,15 @@ const NasaImageList = () => {
       {!images.length ? (
         <h1>No Images Found</h1>
       ) : (
-        images.map((image) => (
-          <ImageCard
-            key={image.id}
-            image={image}
-            handleOpenModal={handleOpenModal}
-          />
-        ))
+        images
+          .toReversed()
+          .map((image) => (
+            <ImageCard
+              key={image.id}
+              image={image}
+              handleOpenModal={handleOpenModal}
+            />
+          ))
       )}
 
       {selectedImage && (
@@ -56,12 +58,12 @@ const NasaImageList = () => {
   );
 };
 
-function ImageListErrorBoundary(props) {
+function ImageGalleryErrorBoundary(props) {
   return (
     <ErrorBoundary>
-      <NasaImageList {...props} />
+      <ImageGallery {...props} />
     </ErrorBoundary>
   );
 }
 
-export default ImageListErrorBoundary;
+export default ImageGalleryErrorBoundary;

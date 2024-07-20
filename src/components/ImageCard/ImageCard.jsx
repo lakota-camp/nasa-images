@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/imageCard.css";
+import "./imageCard.css";
 
 const ImageCard = ({ image, handleOpenModal }) => {
   const { id, title, url, date } = image;
@@ -24,12 +24,12 @@ const ImageCard = ({ image, handleOpenModal }) => {
               </div>
             </div>
 
-            <div className="card-content">
+            {/* <div className="card-content">
               <div className="card-title">
                 <h1>{title}</h1>
               </div>
               <h2>{date}</h2>
-            </div>
+            </div> */}
 
             {/* <button onClick={() => handleOpenModal(image)}>Details</button> */}
           </div>
