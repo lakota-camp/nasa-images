@@ -3,17 +3,20 @@ import { useQuery } from "@tanstack/react-query";
 import fetchPhoto from "../../api/fetchPhoto";
 import Modal from "../Modal/Modal";
 import styles from "./imageOfTheDay.module.scss";
+import Button from "../Button/Button";
+import ErrorMessage from "../Error/ErrorMessage";
+import LoadingMessage from "../Loading/LoadingMessage";
 
 const NasaImageOfTheDay = () => {
   const results = useQuery(["imageDetails"], fetchPhoto);
   const [showModal, setShowModal] = useState(false);
 
   if (results.isError) {
-    return <h2>ERROR!!!</h2>;
+    return <ErrorMessage />;
   }
 
   if (results.isLoading) {
-    return <h2>Loading...</h2>;
+    return <LoadingMessage />;
   }
 
   const image = results.data;
@@ -53,15 +56,12 @@ const NasaImageOfTheDay = () => {
           <h1>{image.title}</h1>
           <h2>{image.date}</h2>
           <h2>{image.explanation}</h2>
-          <div className="buttons">
-            <button
-              onClick={() => {
-                setShowModal(false);
-              }}
-            >
-              Exit
-            </button>
-          </div>
+          <Button
+            action={() => {
+              setShowModal(false);
+            }}
+            text="Exit"
+          />
         </Modal>
       ) : // When show modal is false => do not display show modal (null)
       null}

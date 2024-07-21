@@ -1,37 +1,27 @@
 import React from "react";
-import "./imageCard.css";
-
+import styles from "./imageCard.module.scss";
 const ImageCard = ({ image, handleOpenModal }) => {
-  const { id, title, url, date } = image;
+  const { id, title, url } = image;
 
   return (
     <>
-      <div className="card" key={id}>
+      <div className={styles.card} key={id}>
         {url.includes("youtube") ? (
           <>
             <h1>VIDEO</h1>
           </>
         ) : (
-          <div className="card">
-            <div className="card-image-container">
-              <div className="card-image">
+          <div className={styles.card}>
+            <div className={styles.cardImageContainer}>
+              <div className={styles.cardImage}>
                 <button
-                  className="image-button"
+                  className={styles.imageButton}
                   onClick={() => handleOpenModal(image)}
                 >
                   <img src={url} alt={title} width="800" />
                 </button>
               </div>
             </div>
-
-            {/* <div className="card-content">
-              <div className="card-title">
-                <h1>{title}</h1>
-              </div>
-              <h2>{date}</h2>
-            </div> */}
-
-            {/* <button onClick={() => handleOpenModal(image)}>Details</button> */}
           </div>
         )}
       </div>

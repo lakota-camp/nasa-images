@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: $font-size-base;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: $text-color;
+  border-radius: $border-radius;
+  border: 2px solid #ffffff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background-color: $primary-color;
+}
+
+.button:hover {
+  background-color: #3199c9;
+  color: $background-color;
+}
+
+.button:focus {
+  outline: none;
+}

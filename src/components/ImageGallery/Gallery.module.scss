@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-unit;
+  padding: $spacing-unit;
+}
+
+.heading {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.subHeading {
+  font-size: large;
+}
+
+.body {
+  font-size: medium;
+}

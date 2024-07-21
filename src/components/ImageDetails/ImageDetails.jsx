@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import fetchPhoto from "../../api/fetchPhoto";
 import Modal from "../Modal/Modal";
 
-const NasaImageDetails = () => {
+const ImageDetails = () => {
   const date = "2015-03-25";
   const results = useQuery(["imageDetails"], fetchPhoto(date));
   const [showModal, setShowModal] = useState(false);
@@ -56,4 +56,4 @@ const NasaImageDetails = () => {
   );
 };
 
-export default NasaImageDetails;
+export default ImageDetails;

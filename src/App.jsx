@@ -1,11 +1,11 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Home from "./pages/Home";
-import NasaImageDetails from "./components/ImageDetails/NasaImageDetails";
+import ImageDetails from "./components/ImageDetails/ImageDetails";
 import Header from "./components/Header/Header";
 import "./styles/main.scss";
+import Gallery from "./pages/Gallery";
 
 // Cache time in milliseconds
 const queryClient = new QueryClient({
@@ -28,8 +28,8 @@ const App = () => {
         {/* Routes */}
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/details/:id" element={<NasaImageDetails />} />
-          <Route path="/images" element={<ImageGallery />} />
+          <Route path="/details/:id" element={<ImageDetails />} />
+          <Route path="/images" element={<Gallery />} />
         </Routes>
       </QueryClientProvider>
     </BrowserRouter>

@@ -4,18 +4,21 @@ import Modal from "../Modal/Modal";
 import { useState } from "react";
 import ErrorBoundary from "../Error/ErrorBoundary";
 import ImageCard from "../ImageCard/ImageCard";
-import "./gallery.css";
+import styles from "./Gallery.module.scss";
+import Button from "../Button/Button";
+import LoadingMessage from "../Loading/LoadingMessage";
+import ErrorMessage from "../Error/ErrorMessage";
 
 const ImageGallery = () => {
   const results = useQuery(["images"], fetchSearch);
   const [selectedImage, setSelectedImage] = useState(null);
 
   if (results.isError) {
-    return <h2>ERROR!!!</h2>;
+    return <ErrorMessage />;
   }
 
   if (results.isLoading) {
-    return <h2>Loading...</h2>;
+    return <LoadingMessage />;
   }
 
   const images = results?.data ?? [];
@@ -29,7 +32,7 @@ const ImageGallery = () => {
   };
 
   return (
-    <div className="gallery">
+    <div className={styles.gallery}>
       {!images.length ? (
         <h1>No Images Found</h1>
       ) : (
@@ -46,12 +49,10 @@ const ImageGallery = () => {
 
       {selectedImage && (
         <Modal onClose={handleCloseModal}>
-          <div>
-            <h1>{selectedImage.title}</h1>
-            <h2>{selectedImage.date}</h2>
-            <p>{selectedImage.explanation}</p>
-            <button onClick={handleCloseModal}>Exit</button>
-          </div>
+          <h1 className={styles.heading}>{selectedImage.title}</h1>
+          <h2 className={styles.subHeading}>{selectedImage.date}</h2>
+          <p className={styles.body}>{selectedImage.explanation}</p>
+          <Button action={handleCloseModal} text="Exit" />
         </Modal>
       )}
     </div>
