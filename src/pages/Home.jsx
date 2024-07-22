@@ -3,8 +3,13 @@ import styles from "./Page.module.scss";
 const Home = () => {
   return (
     <>
-      <h1 className={`${styles.header} font-jumbo`}>NASA Image of the day</h1>
-      <NasaImageOfTheDay />;
+      <div className={styles.stars}></div>
+      <div className={styles.stars2}></div>
+      <div className={styles.stars3}></div>
+      <div className={styles.container}>
+        <h1 className={`${styles.header} font-jumbo`}>NASA Image of the Day</h1>
+        <NasaImageOfTheDay />
+      </div>
     </>
   );
 };

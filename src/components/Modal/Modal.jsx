@@ -16,7 +16,15 @@ const Modal = ({ children }) => {
     return () => modalRoot.removeChild(elRef.current); // Clean up by removing the div element from the modalRoot when the component is unmounted
   }, []);
 
-  return createPortal(<div>{children}</div>, elRef.current); // Render the children inside the div element using createPortal
+  return createPortal(
+    <div className="modal-content">
+      {/* <div className="stars"></div>
+      <div className="stars2"></div>
+      <div className="stars3"></div> */}
+      <div className="modal-body">{children}</div>
+    </div>,
+    elRef.current
+  ); // Render the children inside the div element using createPortal
 };
 
 export default Modal;

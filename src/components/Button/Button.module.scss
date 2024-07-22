@@ -22,7 +22,8 @@
 
 .button:hover {
   background-color: #3199c9;
-  color: $background-color;
+  color: $secondary-color;
+  border-color: $secondary-color;
 }
 
 .button:focus {

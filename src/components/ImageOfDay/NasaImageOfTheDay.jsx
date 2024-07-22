@@ -25,25 +25,24 @@ const NasaImageOfTheDay = () => {
     <>
       {/* Container */}
       <div className={styles.container}>
-        <div className={styles.container}>
-          <div className={`${styles.header} font-xl`}>
-            <h2>{image.title}</h2>
-            <h3>{image.date}</h3>
-          </div>
-          {/* Img Content */}
-          <div className={styles.content}>
-            {/* Image / Video */}
-            {image.url.includes("youtube") ? (
-              <iframe src={image.url} title={image.title}></iframe>
-            ) : (
-              <button
-                className={styles.imageButton}
-                onClick={() => setShowModal(true)}
-              >
-                <img src={image.url} alt={image.title} />
-              </button>
-            )}
-          </div>
+        {/* Header */}
+        <div className={`${styles.header} font-xl`}>
+          <h2>{image.title}</h2>
+          <h3>{image.date}</h3>
+        </div>
+        {/* Img Content */}
+        <div className={styles.content}>
+          {/* Image / Video */}
+          {image.url.includes("youtube") ? (
+            <iframe src={image.url} title={image.title}></iframe>
+          ) : (
+            <button
+              className={styles.imageButton}
+              onClick={() => setShowModal(true)}
+            >
+              <img src={image.url} alt={image.title} />
+            </button>
+          )}
         </div>
         {/* Header */}
       </div>
