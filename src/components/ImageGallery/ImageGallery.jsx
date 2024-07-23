@@ -9,8 +9,19 @@ import Button from "../Button/Button";
 import LoadingMessage from "../Loading/LoadingMessage";
 import ErrorMessage from "../Error/ErrorMessage";
 
+// FIXME: adjust this section - understand the functionality
+const useQueryParams = () => {
+  return new URLSearchParams(window.location.search);
+};
+// FIXME: adjust this section - understand the functionality
 const ImageGallery = () => {
-  const results = useQuery(["images"], fetchSearch);
+  const queryParams = useQueryParams();
+  const startDate = queryParams.get("startDate");
+  const endDate =
+    queryParams.get("endDate") || new Date().toISOString().split("T")[0];
+
+  console.log("Start date and end date:", startDate, endDate);
+  const results = useQuery(["images", { startDate, endDate }], fetchSearch);
   const [selectedImage, setSelectedImage] = useState(null);
 
   if (results.isError) {
