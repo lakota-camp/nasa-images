@@ -1,39 +1,65 @@
-import fetchSearch from "../../api/fetchSearch";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import Modal from "../Modal/Modal";
-import { useState } from "react";
+// Components
 import ErrorBoundary from "../Error/ErrorBoundary";
-import ImageCard from "../ImageCard/ImageCard";
-import styles from "./Gallery.module.scss";
+import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
+import ImageCard from "../ImageCard/ImageCard";
 import LoadingMessage from "../Loading/LoadingMessage";
 import ErrorMessage from "../Error/ErrorMessage";
+// Functions
+import fetchSearch from "../../api/fetchSearch";
+// Styles
+import styles from "./Gallery.module.scss";
 
-// FIXME: adjust this section - understand the functionality
+/**
+ * Custom hook that returns the query parameters from the current URL.
+ *
+ * @returns {URLSearchParams} The URLSearchParams object containing the query parameters.
+ */
 const useQueryParams = () => {
   return new URLSearchParams(window.location.search);
 };
+
 // FIXME: adjust this section - understand the functionality
 const ImageGallery = () => {
+  // Call useLocation: Represents the current location of the application.
+  const location = useLocation();
+
+  // Call useQuery to fetch startDate and endDate from url params
   const queryParams = useQueryParams();
   const startDate = queryParams.get("startDate");
-  const endDate =
-    queryParams.get("endDate") || new Date().toISOString().split("T")[0];
+  const endDate = queryParams.get("endDate");
 
-  console.log("Start date and end date:", startDate, endDate);
-  const results = useQuery(["images", { startDate, endDate }], fetchSearch);
+  // Destructure from useQuery: error, loading, data and refetch function
+  const { isError, isLoading, data, refetch } = useQuery(
+    ["images", { startDate, endDate }],
+    fetchSearch,
+    { enabled: false } // Disable automatic query
+  );
+
+  // useEffect to trigger search when dates are changed in the query params
+  useEffect(() => {
+    if (startDate && endDate) {
+      refetch();
+    }
+  }, [startDate, endDate, refetch, location.search]);
+
+  // Selected image state for image details on modal
   const [selectedImage, setSelectedImage] = useState(null);
 
-  if (results.isError) {
+  // Error and loading messages
+  if (isError) {
     return <ErrorMessage />;
   }
-
-  if (results.isLoading) {
+  if (isLoading) {
     return <LoadingMessage />;
   }
 
-  const images = results?.data ?? [];
+  const images = data ?? [];
 
+  // Modal functions
   const handleOpenModal = (image) => {
     setSelectedImage(image);
   };

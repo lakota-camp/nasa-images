@@ -2,7 +2,6 @@
 
 .header {
   padding: $spacing-unit;
-  border-bottom: 0.75px solid $secondary-color;
 }
 
 .link {
@@ -16,13 +15,27 @@ nav ul {
   margin: 0;
   display: flex;
   flex-flow: row wrap;
-  justify-content: start; /* horizontal axis = center */
-  align-items: center; /* vertical axis = center */
+  justify-content: space-between;
+  align-items: center;
   gap: 2rem;
-  padding: $spacing-unit $spacing-unit;
+  padding: $spacing-unit $spacing-triple $spacing-unit;
 }
 
 nav a:hover,
 nav [class*="fa-"]:hover {
   color: $primary-color;
+}
+
+.gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(23, 147, 204, 1) 0%,
+    rgba(135, 88, 255, 1) 100%
+  );
+  height: 2px;
+  width: 100%;
+  position: sticky;
+  // top: 0;
+  // left: 0;
+  // z-index: 1000;
 }

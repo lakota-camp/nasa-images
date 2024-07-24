@@ -3,6 +3,7 @@ import styles from "./Header.module.scss";
 import SearchParam from "../../searchParam/SearchParam";
 
 const Header = () => {
+  // Add CSS animations for hovering over search params, home logo, and button
   return (
     <>
       <header className={styles.header}>
@@ -14,15 +15,11 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link className={`${styles.link} font-lg`} to="/images">
-                Nasa Images
-              </Link>
-            </li>
-            <li>
               <SearchParam />
             </li>
           </ul>
         </nav>
+        <div className={styles.gradient}></div>
       </header>
     </>
   );

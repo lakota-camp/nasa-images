@@ -1,5 +1,6 @@
 import styles from "./Loading.module.scss";
 const LoadingMessage = () => {
+  // FIXME: Style loading component
   return (
     <div className={styles.loadingContainer}>
       <div>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 const ErrorPage = (props) => {
+  // FIXME: Style error page
   const { message } = props;
   return (
     <h2>
