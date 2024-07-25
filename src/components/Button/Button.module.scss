@@ -5,14 +5,14 @@
   padding: 10px 20px;
   margin: 10px;
   font-size: $font-size-base;
-  font-weight: bold;
+  font-weight: $font-weight;
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
   color: $text-color;
   border-radius: $border-radius;
   border: 2px solid #ffffff;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -21,7 +21,12 @@
 }
 
 .button:hover {
-  background-color: #0078af;
+  background: linear-gradient(
+    90deg,
+    rgba(23, 147, 204, 1) 0%,
+    rgba(135, 88, 255, 1) 100%
+  );
+  transform: $transform-sm;
   // color: $background-color;
   // border-color: $background-color;
 }

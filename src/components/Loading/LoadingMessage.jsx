@@ -4,7 +4,7 @@ const LoadingMessage = () => {
   return (
     <div className={styles.loadingContainer}>
       <div>
-        <h2>Loading...</h2>
+        <h2 className={styles.loadingIndicator}>Loading...</h2>
         <div className={`${styles.LoadingMessage} ${styles.spin} font-xxl`}>
           🌀
         </div>

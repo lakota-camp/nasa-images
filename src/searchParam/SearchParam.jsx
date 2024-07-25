@@ -50,6 +50,7 @@ const SearchParam = () => {
             id="endDate"
             name="endDate"
             placeholder="End Date"
+            required
           />
         </label>
         <Button text="Search Images" />

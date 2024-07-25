@@ -5,6 +5,14 @@ async function fetchSearch({ queryKey }) {
   const api_key = "OLKx4hdZAXy4zLA8NjhE416FhGAvbsQZvfg1We45";
   const api_uri = "https://api.nasa.gov/planetary/apod";
 
+  // let url;
+
+  // startDate
+  //   ? (url = `${api_uri}?api_key=${api_key}&start_date=${startDate}&end_date=${endDate}`)
+  //   : (url = `${api_uri}?api_key=${api_key}&start_date=${startDate}`);
+  // console.log(url);
+  // const res = await fetch(url);
+
   const res = await fetch(
     `${api_uri}?api_key=${api_key}&start_date=${startDate}&end_date=${endDate}`
   );

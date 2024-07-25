@@ -4,15 +4,30 @@
   .startDate {
     padding: $spacing-unit;
   }
+
   .endDate {
     padding: $spacing-unit;
   }
-}
 
-.searchField {
-  padding: $spacing-half;
-  margin: $spacing-unit;
-  border: solid $secondary-color;
-  background-color: $background-color;
-  color: $text-color;
+  .searchField {
+    padding: $spacing-half;
+    margin: $spacing-unit;
+    border: solid $secondary-color;
+    border-radius: $border-radius;
+    background-color: $background-color;
+    color: $text-color;
+    box-shadow: 0 -4px 16px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  @keyframes protrude {
+  }
+
+  .searchField:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(23, 147, 204, 1) 0%,
+      rgba(135, 88, 255, 1) 100%
+    );
+    transform: $transform-sm;
+  }
 }

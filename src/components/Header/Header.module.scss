@@ -1,13 +1,17 @@
 @import "../../styles/variables";
 
 .header {
-  padding: $spacing-unit;
+  padding: $spacing-half;
 }
 
 .link {
   text-decoration: none;
   display: block;
   color: $text-color;
+}
+
+.icon {
+  padding-left: $spacing-double;
 }
 
 nav ul {
@@ -24,6 +28,7 @@ nav ul {
 nav a:hover,
 nav [class*="fa-"]:hover {
   color: $primary-color;
+  transform: $transform-sm;
 }
 
 .gradient {
