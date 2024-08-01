@@ -1,26 +1,27 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../components/Button/Button";
+import Button from "../Button/Button";
 import styles from "./SearchParam.module.scss";
-
-// FIXME: Adjust to reset search params when search is made.
+import getTodayDate from "../../../utils/currentDate";
 // FIXME: Fix search reset and extra renders that are not essential
 // FIXME: Add functionality to search specific date (like birthday) and display the images of that day since you were born
+// FIXME: Paginate results after search
 const SearchParam = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     navigate(`/images?startDate=${startDate}&endDate=${endDate}`, {
       replace: true,
     });
     setStartDate("");
     setEndDate("");
   };
+
+  // Todays date
+  const today = getTodayDate();
 
   // FIXME: Add Logic to not allow user to select date passed today!
   // FIXME: Add form submission for exact date search
@@ -37,6 +38,7 @@ const SearchParam = () => {
             id="startDate"
             name="startDate"
             placeholder="Start Date"
+            max={today}
             required
           />
         </label>
@@ -50,6 +52,7 @@ const SearchParam = () => {
             id="endDate"
             name="endDate"
             placeholder="End Date"
+            max={today}
             required
           />
         </label>

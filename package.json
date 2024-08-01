@@ -14,7 +14,8 @@
   "author": "Lakota Camp",
   "license": "ISC",
   "devDependencies": {
-    "@vitejs/plugin-react": "2.1.0",
+    "@types/node": "^20.14.12",
+    "@vitejs/plugin-react": "^4.3.1",
     "eslint": "8.24.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
@@ -23,7 +24,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "2.7.1",
     "sass": "^1.77.8",
-    "vite": "^3.2.10"
+    "vite": "^4.2.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",

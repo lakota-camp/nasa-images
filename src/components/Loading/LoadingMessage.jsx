@@ -1,12 +1,11 @@
 import styles from "./Loading.module.scss";
 const LoadingMessage = () => {
-  // FIXME: Style loading component
   return (
-    <div className={styles.loadingContainer}>
+    <div className={styles.container}>
       <div>
-        <h2 className={styles.loadingIndicator}>Loading...</h2>
-        <div className={`${styles.LoadingMessage} ${styles.spin} font-xxl`}>
-          🌀
+        {/* <h2 className={`${styles.loadingIndicator} font-xl`}>Loading...</h2> */}
+        <div className={`${styles.message} ${styles.spin} font-xxl`}>
+          <div className={styles.loading}></div>
         </div>
       </div>
     </div>

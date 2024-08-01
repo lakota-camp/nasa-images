@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchPhoto from "../../api/fetchPhoto";
 import Modal from "../Modal/Modal";
+import ErrorMessage from "../Error/ErrorMessage";
+import LoadingMessage from "../Loading/LoadingMessage";
 
 const ImageDetails = () => {
   const date = "2015-03-25";
@@ -9,11 +11,11 @@ const ImageDetails = () => {
   const [showModal, setShowModal] = useState(false);
 
   if (results.isError) {
-    return <h2>ERROR!!!</h2>;
+    return <ErrorMessage />;
   }
 
   if (results.isLoading) {
-    return <h2>Loading...</h2>;
+    return <LoadingMessage />;
   }
 
   const image = results.data;

@@ -1,5 +1,5 @@
 @import "../../styles/variables";
-
+// FIXME: make grid responsive, make images stay within aspect ratio (right now they are changing)
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -10,6 +10,7 @@
 .heading {
   font-size: x-large;
   font-weight: bold;
+  text-align: center;
 }
 
 .subHeading {
@@ -18,4 +19,38 @@
 
 .body {
   font-size: medium;
+}
+
+@media (max-width: 576px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Small devices (tablets, 577px to 768px) */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Medium devices (small laptops, 769px to 992px) */
+@media (max-width: 992px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Large devices (desktops, 993px to 1200px) */
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Extra large devices (large desktops, 1201px and up) */
+@media (min-width: 1201px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

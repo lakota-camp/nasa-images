@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: $error-color;
+  padding: $spacing-double;
+  margin: $spacing-triple $spacing-triple;
+}
+
+.link {
+  text-decoration: none;
+  color: $primary-color;
+}
+.link:hover {
+  color: $secondary-color;
+  text-decoration: underline;
+}
