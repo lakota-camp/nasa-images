@@ -2,45 +2,44 @@
 
 .header {
   padding: $spacing-half;
-}
+  nav ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: $spacing-unit $spacing-triple $spacing-unit;
 
-.link {
-  text-decoration: none;
-  display: block;
-  color: $text-color;
-}
+    .link {
+      text-decoration: none;
+      display: block;
+      color: $text-color;
 
-.icon {
-  padding-left: $spacing-double;
-}
+      .icon {
+        padding-left: $spacing-double;
+      }
+    }
+  }
 
-nav ul {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  padding: $spacing-unit $spacing-triple $spacing-unit;
-}
+  nav a:hover,
+  nav [class*="fa-"]:hover {
+    color: $primary-color;
+    transform: $transform-sm;
+  }
 
-nav a:hover,
-nav [class*="fa-"]:hover {
-  color: $primary-color;
-  transform: $transform-sm;
-}
-
-.gradient {
-  background: linear-gradient(
-    90deg,
-    rgba(23, 147, 204, 1) 0%,
-    rgba(135, 88, 255, 1) 100%
-  );
-  height: 2px;
-  width: 100%;
-  position: sticky;
-  // top: 0;
-  // left: 0;
-  // z-index: 1000;
+  .gradient {
+    background: linear-gradient(
+      90deg,
+      rgba(23, 147, 204, 1) 0%,
+      rgba(135, 88, 255, 1) 100%
+    );
+    height: 2px;
+    width: 100%;
+    position: sticky;
+    // top: 0;
+    // left: 0;
+    // z-index: 1000;
+  }
 }
