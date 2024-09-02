@@ -4,4 +4,4 @@ dist/
 .DS_Store
 coverage/
 .vscode/
-.txt.txt
+.txt
